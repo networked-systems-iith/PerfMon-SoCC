@@ -5,12 +5,6 @@
 
 PerfMon is a performance monitoring framework for the host network stack using **eBPF**, enabling fine-grained measurements such as **RTT**, **RNST**, and **CNST** in Kubernetes-based microservice environments.
 
-> 🚧 **Note:** Code will be released soon.
-
----
-
-## Overview
-
 This project is developed on top of the  
 [`netobserv/ebpf-research`](https://github.com/netobserv/ebpf-research) repository, specifically using the `ebpf-measurements` framework.
 
@@ -24,9 +18,22 @@ PerfMon leverages eBPF hook points to monitor packets at ingress and egress poin
 ```bash
 git clone https://github.com/netobserv/ebpf-research.git
 ```
-## Navigate to the required directory
+### 2. Navigate to the required directory
+```bash
+cd ebpf-research/ebpf-measurements/src
+```
 
+### 3. Copy the source files 
 
+Copy the source files rtt.c, user.c, and user1.c to ebpf-research/ebpf-measurements/src
+
+---
+## Compile the code
+```bash
+cd ebpf-research/ebpf-measurements/
+make
+```
+---
 # PerfMon-SoCC
 SoCC 2025 - PerfMon: Performance Monitoring of Host Network Stack
 
