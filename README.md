@@ -12,7 +12,7 @@ PerfMon leverages eBPF hook points to monitor packets at ingress and egress poin
 
 ---
 
-## Repository Setup
+## Setup
 
 ### 1. Clone the base repository
 ```bash
@@ -27,30 +27,22 @@ cd ebpf-research/ebpf-measurements/src
 
 Copy the source files rtt.c, user.c, and user1.c to ebpf-research/ebpf-measurements/src
 
----
-## Compile the code
+### 4. Compile the code
 ```bash
 cd ebpf-research/ebpf-measurements/
 make
 ```
 ---
-# PerfMon-SoCC
-SoCC 2025 - PerfMon: Performance Monitoring of Host Network Stack
 
-Code is coming soon!
-
-We developed our code on top of netobserv/ebpf_research repo. 
-
-Clone the repo https://github.com/netobserv/ebpf-research/tree/main/ebpf-measurements. 
-
-Navigate to ebpf-research/ebpf-measurements/src/. 
-
-Copy the code rtt.c, user.c and user1.c to the directory. 
-
-Compile the code from ebpf-research/ebpf-measurements/ by issuing make command. 
-
-After deploying the microservice application in the Kubernetes cluster, achieve RTT, RNST, and CNST monitoring by adding ebpf hooks points as given below. 
-To hook the code to the ingress and egress of a particular veth-interface, execute using "sudo ./user -i <veth interface> ". 
-
-To hook the code to the external interface (the interface via which the node is connected to other cluster nodes), execute "sudo ./user1 -i <veth interface>". It is mandatory to hook to the external interface.
+## Usage Instructions
+To monitor RTT, RNST, and CNST, hook the eBPF code to the ingress and egress of both veth interface and the external interface (the interface via which the cluster node is connected to other cluster nodes).
+### 1. Hooking to VETH interface
+```bash
+./user -i <veth interface name>
+```
+### 2. Hooking to EXT interface
+```bash
+./user1 -i <ext interface name>
+```
+It is mandatory to hook to VETH and EXT interface for the correct monitoring.
 
